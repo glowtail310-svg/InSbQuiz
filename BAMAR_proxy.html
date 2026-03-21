@@ -101,7 +101,7 @@
     <section class="card header">
       <div class="titleRow">
         <div>
-          <h1>BAMAR -- バーマル</h1>
+          <h1>BAMAR</h1>
           <p class="sub">自動ルビ振りサイト！ドメインが qtesから続き、.xyz で終わるURLをペーストすると、判明している文字は自動的にルビが振られるよっ。</p>
         </div>
         <div class="badge">Mobile first</div>
@@ -217,7 +217,7 @@
     modeToggleBtn.addEventListener('click', function() {
       iframeMode = !iframeMode;
       modeToggleBtn.classList.toggle('iframe-on', iframeMode);
-      modeToggleLabel.textContent = iframeMode ? 'iframe操作中' : '枠サイト操作中';
+      modeToggleLabel.textContent = iframeMode ? 'ブラウザ操作中' : 'サイト操作中';
       // オーバーレイで iframe へのタッチ/クリックをブロック
       iframeOverlay.classList.toggle('active', !iframeMode);
       // タッチイベントも明示的に止める
