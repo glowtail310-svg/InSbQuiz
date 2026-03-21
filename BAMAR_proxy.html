@@ -283,7 +283,18 @@
       } catch(e) { setError('この端末では貼り付け取得が制限されているかも。手で貼ってみてね。'); }
     });
     urlInput.addEventListener('keydown', function(e) { if (e.key === 'Enter') openUrl(); });
-    iframe.addEventListener('load', function() { setLoading(false); setError(''); statusBadge.textContent = '表示中'; });
+iframe.addEventListener('load', function() {
+  setLoading(false); setError(''); statusBadge.textContent = '表示中';
+  // iframeのsrcからプロキシURLを外して実際のURLを取り出す
+  try {
+    var src = iframe.src || '';
+    if (src.includes('proxy?url=')) {
+      var realUrl = decodeURIComponent(src.split('proxy?url=')[1].split('&')[0]);
+      currentUrl = realUrl;
+      currentUrlText.textContent = realUrl;
+    }
+  } catch(e) {}
+});
     iframe.addEventListener('error', function() {
       setLoading(false); statusBadge.textContent = '読み込み失敗';
       setError('読み込めなかったよ。別タブで開いてみてね。');
